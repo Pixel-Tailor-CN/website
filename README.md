@@ -2,7 +2,7 @@
 
 > 为不完美的体验，做精细的缝补。
 
-「原点系列」应用矩阵的官方门户落地页。
+「原点系列」的官方门户落地页。
 
 ## 技术栈
 
@@ -66,14 +66,14 @@ pnpm check
     │   └── Layout.astro      # 全局布局 + SEO + 主题脚本
     ├── components/
     │   ├── Hero.astro        # 首屏
-    │   ├── AppMatrix.astro   # 应用矩阵（网格）
+    │   ├── AppMatrix.astro   # 原点系列网格
     │   ├── AppCard.astro     # 单个应用卡片
     │   ├── About.astro       # 关于 + 法律免责声明
     │   ├── Footer.astro
     │   └── ThemeToggle.astro # 主题切换按钮
     ├── config/
     │   ├── site.ts           # 站点信息 / SEO 配置
-    │   └── apps.ts           # 应用矩阵集中配置（核心维护点）
+    │   └── apps.ts           # 原点系列集中配置（核心维护点）
     └── styles/
         └── global.css        # @theme 主题变量 + M3 组件类
 ```

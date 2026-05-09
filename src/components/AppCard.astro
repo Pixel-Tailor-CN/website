@@ -34,6 +34,7 @@ const accent = accentMap[app.accent];
 const hasPlay = !!app.links.googlePlay;
 const hasGithub = !!app.links.github;
 const hasApk = !!app.links.apk;
+const hasPrivacy = !!app.links.privacy;
 ---
 
 <article
@@ -71,8 +72,12 @@ const hasApk = !!app.links.apk;
         class="m3-btn-filled h-10 px-5 text-sm"
         aria-label={`在 Google Play 下载 ${app.name}`}
       >
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4" aria-hidden="true">
-          <path d="m13.41 12 7.06-7.06a1.5 1.5 0 0 0-.32-2.39L4.6 1.05a1.2 1.2 0 0 0-.6 0L13.41 12ZM3 2.66v18.68c0 .47.27.9.69 1.1L12.3 13 3 2.66ZM14.78 13.36 5.96 22.94c.21.05.43.06.65 0l15.55-3.5a1.5 1.5 0 0 0 .32-2.39l-3.4-3.4-4.3 1.71Zm6.7-2.94-3.93-1.59L14.18 12l3.37 3.17 3.93-1.6a1.49 1.49 0 0 0 0-2.7Z"/>
+        <!-- Google Play 官方四色三角形 -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-4 h-4" aria-hidden="true">
+          <path fill="#00C3FF" d="M3 20.5V3.5c0-.59.34-1.11.84-1.35L13.69 12 3.84 21.85C3.34 21.6 3 21.09 3 20.5z"/>
+          <path fill="#FFCE00" d="m16.81 8.88-2.27 2.27L6.05 2.66z"/>
+          <path fill="#FF3A44" d="m16.81 15.12-10.76 6.22 8.49-8.49z"/>
+          <path fill="#00DE7A" d="M20.16 10.81c.59.32.59 1.06 0 1.38l-2.27 1.31-2.5-2.5 2.5-2.5z"/>
         </svg>
         Google Play
       </a>
@@ -104,6 +109,21 @@ const hasApk = !!app.links.apk;
           <line x1="12" y1="15" x2="12" y2="3"></line>
         </svg>
         APK
+      </a>
+    )}
+    {hasPrivacy && (
+      <a
+        href={app.links.privacy}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="m3-btn-outlined h-10 px-5 text-sm"
+        aria-label={`查看 ${app.name} 的隐私政策`}
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4" aria-hidden="true">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"></path>
+          <path d="m9 12 2 2 4-4"></path>
+        </svg>
+        隐私政策
       </a>
     )}
   </div>

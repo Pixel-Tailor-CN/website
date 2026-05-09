@@ -1,9 +1,9 @@
 /**
- * 应用矩阵集中配置
+ * 原点系列应用集中配置
  *
  * 维护说明：
  * - icon：放置在 /public/icons/ 目录下的 SVG/PNG 路径
- * - googlePlay / github：留空字符串则按钮不会渲染
+ * - googlePlay / github / apk / privacy：留空字符串或省略则按钮不会渲染
  * - accent：用于卡片悬停时的点缀色（Google 四色之一）
  */
 export type AccentColor = 'blue' | 'red' | 'yellow' | 'green';
@@ -19,6 +19,7 @@ export interface AppItem {
     googlePlay?: string;
     github?: string;
     apk?: string;
+    privacy?: string;
   };
 }
 
@@ -33,6 +34,7 @@ export const apps: AppItem[] = [
     links: {
       googlePlay: 'https://play.google.com/store/apps/details?id=vip.mystery0.pixel.telo',
       github: 'https://github.com/Pixel-Tailor-CN/pixel-telo',
+      privacy: 'https://github.com/PixelTelo/AppRelease/raw/refs/heads/main/PRIVACY.md',
     },
   },
   {
@@ -45,6 +47,7 @@ export const apps: AppItem[] = [
     links: {
       googlePlay: '',
       github: 'https://github.com/Pixel-Tailor-CN/pixel-text',
+      privacy: '',
     },
   },
   {
@@ -57,6 +60,7 @@ export const apps: AppItem[] = [
     links: {
       googlePlay: 'https://play.google.com/store/apps/details?id=vip.mystery0.pixel.meter',
       github: 'https://github.com/Pixel-Tailor-CN/pixel-meter',
+      privacy: 'https://github.com/Pixel-Tailor-CN/PixelMeter/raw/refs/heads/master/PRIVACY_POLICY_CN.md',
     },
   },
   {
@@ -69,6 +73,7 @@ export const apps: AppItem[] = [
     links: {
       googlePlay: 'https://play.google.com/store/apps/details?id=vip.mystery0.pixel.geo',
       github: 'https://github.com/Pixel-Tailor-CN/pixel-geo',
+      privacy: 'https://github.com/Pixel-Tailor-CN/PixelGeo/raw/refs/heads/master/PRIVACY.md',
     },
   },
 ];
