@@ -3,7 +3,7 @@ import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
-  site: 'https://pixel-tailor-cn.github.io',
+  site: 'https://pixel.mystery0.vip',
   vite: {
     plugins: [tailwindcss()],
   },
