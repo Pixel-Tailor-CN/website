@@ -41,8 +41,8 @@ const hasApk = !!app.links.apk;
   aria-labelledby={`app-${app.id}-title`}
 >
   <header class="flex items-start gap-4">
-    <div class="shrink-0 w-14 h-14 rounded-(--radius-m3) bg-surface-container-high border border-outline-variant/40 flex items-center justify-center overflow-hidden">
-      <img src={app.icon} alt={`${app.name} 图标`} class="w-9 h-9" loading="lazy" />
+    <div class="shrink-0 w-14 h-14 rounded-(--radius-m3) border border-outline-variant/40 overflow-hidden">
+      <img src={app.icon} alt={`${app.name} 图标`} class="w-full h-full object-cover" loading="lazy" />
     </div>
     <div class="flex-1 min-w-0">
       <h3 id={`app-${app.id}-title`} class="text-xl font-semibold text-on-surface">

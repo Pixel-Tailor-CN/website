@@ -16,8 +16,10 @@ export interface SiteConfig {
     keywords: string[];
     ogImage: string;
   };
-  /** 品牌 Logo（SVG），放在 /public/logo.svg 下，后续替换 */
+  /** 完整品牌 Logo（用于 Hero 大图，可包含文字） */
   logo: string;
+  /** 简化标识 mark（用于导航栏小尺寸场景） */
+  mark: string;
 }
 
 export const site: SiteConfig = {
@@ -45,4 +47,5 @@ export const site: SiteConfig = {
     ogImage: '/og.png',
   },
   logo: '/logo.svg',
+  mark: '/logo.svg',
 };

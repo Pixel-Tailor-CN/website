@@ -17,13 +17,14 @@ import { site } from '@/config/site';
   </div>
 
   <div class="mx-auto max-w-6xl px-5 sm:px-8 pt-16 sm:pt-24 pb-12 sm:pb-20">
-    <!-- Logo 占位（针线 / 剪刀） -->
+    <!-- 组织 Logo（完整品牌图） -->
     <div class="flex">
-      <div
-        class="inline-flex items-center justify-center w-16 h-16 rounded-(--radius-m3) bg-surface-container-high border border-outline-variant/40 shadow-(--shadow-m3-1)"
-      >
-        <img src={site.logo} alt={site.name} class="w-9 h-9" />
-      </div>
+      <img
+        src={site.logo}
+        alt={site.name}
+        class="h-20 sm:h-24 w-auto"
+        loading="eager"
+      />
     </div>
 
     <h1
