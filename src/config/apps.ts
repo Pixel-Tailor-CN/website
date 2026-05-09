@@ -15,6 +15,7 @@ export interface AppItem {
   highlights: string[];
   icon: string;
   accent: AccentColor;
+  comingSoon?: boolean;
   links: {
     googlePlay?: string;
     github?: string;
@@ -49,6 +50,7 @@ export const apps: AppItem[] = [
       github: 'https://github.com/Pixel-Tailor-CN/PixelText',
       privacy: '',
     },
+    comingSoon: true
   },
   {
     id: 'pixel-meter',

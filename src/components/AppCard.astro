@@ -6,6 +6,8 @@ interface Props {
 }
 
 const { app } = Astro.props;
+const isComingSoon = app.comingSoon ?? false;
+const displayIcon = isComingSoon ? '/icons/coming-soon.png' : app.icon;
 
 const accentMap: Record<AccentColor, { ring: string; halo: string; chip: string }> = {
   blue: {
@@ -43,12 +45,19 @@ const hasPrivacy = !!app.links.privacy;
 >
   <header class="flex items-start gap-4">
     <div class="shrink-0 w-14 h-14 rounded-(--radius-m3) border border-outline-variant/40 overflow-hidden">
-      <img src={app.icon} alt={`${app.name} 图标`} class="w-full h-full object-cover" loading="lazy" />
+      <img src={displayIcon} alt={`${app.name} 图标`} class="w-full h-full object-cover" loading="lazy" />
     </div>
     <div class="flex-1 min-w-0">
-      <h3 id={`app-${app.id}-title`} class="text-xl font-semibold text-on-surface">
-        {app.name}
-      </h3>
+      <div class="flex items-center gap-2">
+        <h3 id={`app-${app.id}-title`} class="text-xl font-semibold text-on-surface">
+          {app.name}
+        </h3>
+        {isComingSoon && (
+          <span class="inline-flex items-center h-6 px-2.5 rounded-full text-xs font-medium bg-primary/10 text-primary">
+            Coming Soon
+          </span>
+        )}
+      </div>
       <p class="mt-1 text-sm text-on-surface-variant">
         {app.summary}
       </p>
@@ -64,7 +73,7 @@ const hasPrivacy = !!app.links.privacy;
   </ul>
 
   <div class="mt-auto flex flex-wrap gap-2.5 pt-2">
-    {hasPlay && (
+    {!isComingSoon && hasPlay && (
       <a
         href={app.links.googlePlay}
         target="_blank"
@@ -82,7 +91,7 @@ const hasPrivacy = !!app.links.privacy;
         Google Play
       </a>
     )}
-    {hasGithub && (
+    {!isComingSoon && hasGithub && (
       <a
         href={app.links.github}
         target="_blank"
@@ -96,7 +105,7 @@ const hasPrivacy = !!app.links.privacy;
         GitHub
       </a>
     )}
-    {hasApk && (
+    {!isComingSoon && hasApk && (
       <a
         href={app.links.apk}
         target="_blank"
@@ -111,7 +120,7 @@ const hasPrivacy = !!app.links.privacy;
         APK
       </a>
     )}
-    {hasPrivacy && (
+    {!isComingSoon && hasPrivacy && (
       <a
         href={app.links.privacy}
         target="_blank"
