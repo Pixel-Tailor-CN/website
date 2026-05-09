@@ -33,7 +33,7 @@ export const apps: AppItem[] = [
     accent: 'blue',
     links: {
       googlePlay: 'https://play.google.com/store/apps/details?id=vip.mystery0.pixel.telo',
-      github: 'https://github.com/Pixel-Tailor-CN/pixel-telo',
+      github: 'https://github.com/Pixel-Tailor-CN/PixelTelo',
       privacy: 'https://github.com/PixelTelo/AppRelease/raw/refs/heads/main/PRIVACY.md',
     },
   },
@@ -46,7 +46,7 @@ export const apps: AppItem[] = [
     accent: 'green',
     links: {
       googlePlay: '',
-      github: 'https://github.com/Pixel-Tailor-CN/pixel-text',
+      github: 'https://github.com/Pixel-Tailor-CN/PixelText',
       privacy: '',
     },
   },
@@ -59,7 +59,7 @@ export const apps: AppItem[] = [
     accent: 'yellow',
     links: {
       googlePlay: 'https://play.google.com/store/apps/details?id=vip.mystery0.pixel.meter',
-      github: 'https://github.com/Pixel-Tailor-CN/pixel-meter',
+      github: 'https://github.com/Pixel-Tailor-CN/PixelMeter',
       privacy: 'https://github.com/Pixel-Tailor-CN/PixelMeter/raw/refs/heads/master/PRIVACY_POLICY_CN.md',
     },
   },
@@ -72,7 +72,7 @@ export const apps: AppItem[] = [
     accent: 'red',
     links: {
       googlePlay: 'https://play.google.com/store/apps/details?id=vip.mystery0.pixel.geo',
-      github: 'https://github.com/Pixel-Tailor-CN/pixel-geo',
+      github: 'https://github.com/Pixel-Tailor-CN/PixelGeo',
       privacy: 'https://github.com/Pixel-Tailor-CN/PixelGeo/raw/refs/heads/master/PRIVACY.md',
     },
   },
