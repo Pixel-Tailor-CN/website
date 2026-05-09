@@ -1,0 +1,24 @@
+---
+import { apps } from '@/config/apps';
+import AppCard from '@/components/AppCard.astro';
+---
+
+<section id="apps" class="scroll-mt-20">
+  <div class="mx-auto max-w-6xl px-5 sm:px-8 py-16 sm:py-20">
+    <div class="max-w-2xl">
+      <p class="text-sm font-medium text-primary uppercase tracking-wider">
+        应用矩阵
+      </p>
+      <h2 class="mt-3 text-3xl sm:text-4xl font-bold tracking-tight text-on-surface">
+        为体验的每一处缝隙，专门定制。
+      </h2>
+      <p class="mt-3 text-base text-on-surface-variant">
+        每个工具只解决一个问题，但解决得足够纯粹。
+      </p>
+    </div>
+
+    <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
+      {apps.map((app) => <AppCard app={app} />)}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+  <!-- “针线/剪刀”意象的极简组合：两片刀刃 + 缝合线 -->
+  <circle cx="13" cy="34" r="5" stroke="#4285F4" />
+  <circle cx="35" cy="34" r="5" stroke="#34A853" />
+  <path d="M16.5 30 38 8" stroke="#EA4335" />
+  <path d="M31.5 30 10 8" stroke="#FBBC05" />
+  <path d="M24 22v8" stroke="#6750A4" stroke-dasharray="2 3" />
+</svg>

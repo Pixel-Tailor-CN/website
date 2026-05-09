@@ -1,0 +1,19 @@
+---
+import { site } from '@/config/site';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-outline-variant/30">
+  <div class="mx-auto max-w-6xl px-5 sm:px-8 py-10 flex flex-col sm:flex-row gap-4 sm:items-center sm:justify-between">
+    <div class="flex items-center gap-2">
+      <img src={site.logo} alt={site.name} class="w-5 h-5 opacity-80" />
+      <p class="text-sm text-on-surface-variant">
+        © {year} {site.author.org}. 保留所有权利。
+      </p>
+    </div>
+    <p class="text-xs text-on-surface-variant/80">
+      与 Google LLC 无关 · “Pixel” 为 Google LLC 注册商标
+    </p>
+  </div>
+</footer>

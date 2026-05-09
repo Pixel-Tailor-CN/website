@@ -1,0 +1,54 @@
+---
+import { site } from '@/config/site';
+---
+
+<section id="about" class="scroll-mt-20 bg-surface-container border-y border-outline-variant/30">
+  <div class="mx-auto max-w-6xl px-5 sm:px-8 py-16 sm:py-20 grid gap-10 md:grid-cols-2">
+    <div>
+      <p class="text-sm font-medium text-primary uppercase tracking-wider">
+        关于
+      </p>
+      <h2 class="mt-3 text-3xl sm:text-4xl font-bold tracking-tight text-on-surface">
+        由独立开发者发起的开源工具集。
+      </h2>
+      <p class="mt-4 text-base text-on-surface-variant leading-relaxed">
+        本项目由 <span class="font-semibold text-on-surface">{site.author.name}</span>
+        （{site.author.org} 组织）发起，致力于为 Pixel 设备在国内的使用场景提供更顺手的小工具。
+      </p>
+      <p class="mt-3 text-base text-on-surface-variant leading-relaxed">
+        所有应用均在 GitHub 开源，欢迎反馈与共建。
+      </p>
+
+      <div class="mt-6 flex flex-wrap gap-3">
+        <a href={site.author.github} target="_blank" rel="noopener noreferrer" class="m3-btn-outlined">
+          访问 GitHub 组织
+        </a>
+      </div>
+    </div>
+
+    <aside
+      class="rounded-(--radius-m3-lg) border border-google-yellow/40 bg-google-yellow/5 p-6 sm:p-7"
+      role="note"
+      aria-label="法律免责声明"
+    >
+      <div class="flex items-start gap-3">
+        <div class="shrink-0 w-10 h-10 rounded-full bg-google-yellow/20 text-[#B5891D] dark:text-google-yellow flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5">
+            <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path>
+            <path d="M12 9v4"></path>
+            <path d="M12 17h.01"></path>
+          </svg>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold text-on-surface">
+            法律免责声明
+          </h3>
+          <ul class="mt-3 space-y-2 text-sm leading-relaxed text-on-surface-variant">
+            <li>Pixel-Tailor-CN 是一个独立的开源项目，与 Google LLC 无任何关联。</li>
+            <li>“Pixel” 是 Google LLC 的注册商标。</li>
+          </ul>
+        </div>
+      </div>
+    </aside>
+  </div>
+</section>
