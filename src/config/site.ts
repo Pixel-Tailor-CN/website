@@ -11,6 +11,7 @@ export interface SiteConfig {
     name: string;
     org: string;
     github: string;
+    telegram: string;
   };
   seo: {
     keywords: string[];
@@ -33,6 +34,7 @@ export const site: SiteConfig = {
     name: 'Mystery0',
     org: 'Pixel-Tailor-CN',
     github: 'https://github.com/Pixel-Tailor-CN',
+    telegram: 'https://t.me/pixel_tailor_cn',
   },
   seo: {
     keywords: [

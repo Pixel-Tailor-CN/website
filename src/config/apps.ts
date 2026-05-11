@@ -34,7 +34,7 @@ export const apps: AppItem[] = [
     accent: 'blue',
     links: {
       googlePlay: 'https://play.google.com/store/apps/details?id=vip.mystery0.pixel.telo',
-      github: '',
+      github: 'https://github.com/Pixel-Tailor-CN/PixelTelo',
       privacy: 'https://github.com/PixelTelo/AppRelease/raw/refs/heads/main/PRIVACY.md',
     },
   },
