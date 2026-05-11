@@ -146,6 +146,31 @@
   }
 }
 
+@utility m3-btn-text {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  height: 2.75rem;
+  padding-inline: 1rem;
+  border-radius: 9999px;
+  font-weight: 500;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: var(--color-on-surface-variant);
+  background-color: transparent;
+  transition: all 0.2s ease;
+  cursor: pointer;
+
+  &:hover {
+    background-color: color-mix(in oklab, var(--color-on-surface) 5%, transparent);
+    color: var(--color-on-surface);
+  }
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
 @utility m3-btn-icon {
   display: inline-flex;
   align-items: center;
