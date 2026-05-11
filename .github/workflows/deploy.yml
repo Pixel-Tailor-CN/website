@@ -27,7 +27,3 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
-      - name: Deploy to EdgeOne Pages
-        run: npx edgeone pages deploy dist -n pixel-tailor-cn-website -t ${{ secrets.EDGEONE_API_TOKEN }}
-        env:
-          EDGEONE_API_TOKEN: ${{ secrets.EDGEONE_API_TOKEN }}
