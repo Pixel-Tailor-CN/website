@@ -28,35 +28,34 @@ export const apps: AppItem[] = [
   {
     id: 'pixel-telo',
     name: 'Pixel Telo',
-    summary: '现代化的来电与通讯管理工具，纯粹的拦截体验。',
-    highlights: ['智能来电拦截', '原生通讯录联动'],
+    summary: '专为 Pixel 打造的来电识别与拦截应用，本地优先处理，隐私零泄露。',
+    highlights: ['智能来电拦截', '原生通话记录联动', '自定义黑白名单'],
     icon: '/icons/pixel-telo.png',
     accent: 'blue',
     links: {
       googlePlay: 'https://play.google.com/store/apps/details?id=vip.mystery0.pixel.telo',
       github: 'https://github.com/Pixel-Tailor-CN/PixelTelo',
-      privacy: 'https://github.com/PixelTelo/AppRelease/raw/refs/heads/main/PRIVACY.md',
+      privacy: 'https://github.com/Pixel-Tailor-CN/PixelTelo/raw/refs/heads/master/PRIVACY.md',
     },
   },
   {
     id: 'pixel-text',
     name: 'Pixel Text',
-    summary: '专为简体中文设计的短信解析应用，卡片式提取票据信息。',
-    highlights: ['票据信息卡片化', '简体中文场景优化'],
+    summary: '为 Pixel 打造的本地智能短信应用，验证码、账单、快递一眼看清。',
+    highlights: ['智能信息卡片化', '针对简体中文场景优化', '大模型自动识别骚扰内容'],
     icon: '/icons/pixel-text.png',
     accent: 'green',
     links: {
       googlePlay: '',
       github: 'https://github.com/Pixel-Tailor-CN/PixelText',
-      privacy: '',
-    },
-    comingSoon: true
+      privacy: 'https://github.com/Pixel-Tailor-CN/PixelText/raw/refs/heads/master/PRIVACY.md',
+    }
   },
   {
     id: 'pixel-meter',
     name: 'Pixel Meter',
-    summary: '高精度的状态栏网速监视器与流量统计工具。',
-    highlights: ['毫秒级状态栏网速', '流量与连接统计'],
+    summary: '专为 Pixel 和原生 Android 设计的精准网速指示器。',
+    highlights: ['状态栏网速', '高精度', '适配VPN', '原生方案'],
     icon: '/icons/pixel-meter.png',
     accent: 'yellow',
     links: {
@@ -68,8 +67,8 @@ export const apps: AppItem[] = [
   {
     id: 'pixel-geo',
     name: 'Pixel Geo',
-    summary: '优雅的地理位置增强与网络环境辅助工具。',
-    highlights: ['位置增强', '网络环境辅助'],
+    summary: '原点罗盘是一款精准优雅的指南针与定位工具，提供真北方向、实时经纬度及内置水平仪功能，助您轻松掌握方向。数据纯本地处理，安全可靠无广告。。',
+    highlights: ['指南针', '经纬度定位', '水平仪'],
     icon: '/icons/pixel-geo.png',
     accent: 'red',
     links: {
