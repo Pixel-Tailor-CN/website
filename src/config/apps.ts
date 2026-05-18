@@ -67,7 +67,7 @@ export const apps: AppItem[] = [
   {
     id: 'pixel-geo',
     name: 'Pixel Geo',
-    summary: '原点罗盘是一款精准优雅的指南针与定位工具，提供真北方向、实时经纬度及内置水平仪功能，助您轻松掌握方向。数据纯本地处理，安全可靠无广告。。',
+    summary: '原点罗盘是一款精准优雅的指南针与定位工具，提供真北方向、实时经纬度及内置水平仪功能，助您轻松掌握方向。数据纯本地处理，安全可靠无广告。',
     highlights: ['指南针', '经纬度定位', '水平仪'],
     icon: '/icons/pixel-geo.png',
     accent: 'red',
