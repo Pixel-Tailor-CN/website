@@ -28,8 +28,8 @@ export const apps: AppItem[] = [
   {
     id: 'pixel-telo',
     name: 'Pixel Telo',
-    summary: '专为 Pixel 打造的来电识别与拦截应用，本地优先处理，隐私零泄露。',
-    highlights: ['智能来电拦截', '原生通话记录联动', '自定义黑白名单'],
+    summary: '专为 Pixel 和类原生 Android 设计的来电识别与拦截应用，与系统拨号器深度集成。',
+    highlights: ['来电识别拦截', '归属地与标签规则', '本地优先查询'],
     icon: '/icons/pixel-telo.png',
     accent: 'blue',
     links: {
@@ -41,8 +41,8 @@ export const apps: AppItem[] = [
   {
     id: 'pixel-text',
     name: 'Pixel Text',
-    summary: '为 Pixel 打造的本地智能短信应用，验证码、账单、快递一眼看清。',
-    highlights: ['智能信息卡片化', '针对简体中文场景优化', '大模型自动识别骚扰内容'],
+    summary: '面向国内 Pixel 用户的 SMS/MMS 短信应用，把验证码、账单、快递等服务短信整理成卡片。',
+    highlights: ['默认短信应用', '服务短信卡片', '端侧骚扰识别'],
     icon: '/icons/pixel-text.png',
     accent: 'green',
     links: {
@@ -54,8 +54,8 @@ export const apps: AppItem[] = [
   {
     id: 'pixel-meter',
     name: 'Pixel Meter',
-    summary: '专为 Pixel 和原生 Android 设计的精准网速指示器。',
-    highlights: ['状态栏网速', '高精度', '适配VPN', '原生方案'],
+    summary: '专为 Pixel 和原生 Android 设计的网速监控工具，过滤 VPN 虚拟接口，显示更准确的实时速度。',
+    highlights: ['VPN 流量过滤', '通知栏与悬浮窗', '快捷设置开关'],
     icon: '/icons/pixel-meter.png',
     accent: 'yellow',
     links: {
@@ -67,8 +67,8 @@ export const apps: AppItem[] = [
   {
     id: 'pixel-geo',
     name: 'Pixel Geo',
-    summary: '原点罗盘是一款精准优雅的指南针与定位工具，提供真北方向、实时经纬度及内置水平仪功能，助您轻松掌握方向。数据纯本地处理，安全可靠无广告。',
-    highlights: ['指南针', '经纬度定位', '水平仪'],
+    summary: '专业罗盘与定位工具，提供真北/磁北切换、WGS-84 坐标和水平仪，传感器与定位数据本地处理。',
+    highlights: ['真北/磁北', 'WGS-84 坐标', '水平仪与分享'],
     icon: '/icons/pixel-geo.png',
     accent: 'red',
     links: {
