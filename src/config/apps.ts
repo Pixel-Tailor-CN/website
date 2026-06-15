@@ -77,4 +77,16 @@ export const apps: AppItem[] = [
       privacy: 'https://github.com/Pixel-Tailor-CN/PixelGeo/raw/refs/heads/master/PRIVACY.md',
     },
   },
+  {
+    id: 'pixel-snooze',
+    name: 'Pixel Snooze',
+    summary: '本地优先的闹钟辅助工具，在休息日自动触发 Google/AOSP 时钟通知里的跳过或关闭操作。',
+    highlights: ['休息日判断', '通知监听跳过', '调休日历缓存'],
+    icon: '/icons/pixel-snooze.png',
+    accent: 'blue',
+    links: {
+      github: 'https://github.com/Pixel-Tailor-CN/PixelSnooze',
+      privacy: 'https://github.com/Pixel-Tailor-CN/PixelSnooze/raw/refs/heads/main/PRIVACY.md',
+    },
+  },
 ];
