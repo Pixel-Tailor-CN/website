@@ -1,0 +1,80 @@
+---
+const supportChannels = [
+  {
+    id: 'alipay',
+    name: '支付宝',
+    description: '使用支付宝扫码支持',
+    src: '/support/alipay.jpg',
+    alt: '支付宝收款码',
+    width: 1080,
+    height: 1621,
+    chip: 'bg-google-blue/10 text-google-blue',
+  },
+  {
+    id: 'wechat',
+    name: '微信',
+    description: '使用微信扫码支持',
+    src: '/support/wechat.png',
+    alt: '微信收款码',
+    width: 1123,
+    height: 1527,
+    chip: 'bg-google-green/10 text-google-green',
+  },
+];
+---
+
+<section id="support" class="scroll-mt-20">
+  <div class="mx-auto max-w-6xl px-5 sm:px-8 py-16 sm:py-20">
+    <div class="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(520px,0.9fr)] lg:items-start">
+      <div class="max-w-2xl">
+        <p class="text-sm font-medium text-primary uppercase tracking-wider">
+          支持项目
+        </p>
+        <h2 class="mt-3 text-3xl sm:text-4xl font-bold tracking-tight text-on-surface">
+          支持原点系列持续维护。
+        </h2>
+        <p class="mt-3 text-base text-on-surface-variant">
+          如果这些工具节省了你的时间，可以通过支付宝或微信自愿赞助。赞助将用于功能优化、问题修复、发布维护和必要的开发成本。
+        </p>
+        <p class="mt-4 text-sm text-on-surface-variant/80">
+          赞助不是使用条件，应用的下载、开源与隐私承诺不受影响。
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
+        {supportChannels.map((channel) => (
+          <article class="m3-card p-5 sm:p-6" aria-labelledby={`support-${channel.id}`}>
+            <div class="flex items-start justify-between gap-3">
+              <div>
+                <h3 id={`support-${channel.id}`} class="text-lg font-semibold text-on-surface">
+                  {channel.name}
+                </h3>
+                <p class="mt-1 text-sm text-on-surface-variant">
+                  {channel.description}
+                </p>
+              </div>
+              <span class={`shrink-0 inline-flex items-center h-7 px-3 rounded-full text-xs font-medium ${channel.chip}`}>
+                收款码
+              </span>
+            </div>
+
+            <div class="mt-5 rounded-[var(--radius-m3)] bg-white p-3 shadow-m3-1">
+              <img
+                src={channel.src}
+                alt={channel.alt}
+                width={channel.width}
+                height={channel.height}
+                loading="lazy"
+                class="mx-auto h-auto w-full rounded-[18px]"
+              />
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+
+    <p class="mt-6 text-center text-xs text-on-surface-variant/70">
+      扫码前请确认收款方信息，按需自愿支持。
+    </p>
+  </div>
+</section>
