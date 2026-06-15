@@ -48,7 +48,7 @@ export const apps: AppItem[] = [
     links: {
       googlePlay: 'https://play.google.com/store/apps/details?id=vip.mystery0.pixel.text',
       github: 'https://github.com/Pixel-Tailor-CN/PixelText',
-      privacy: 'https://github.com/Pixel-Tailor-CN/PixelText/raw/refs/heads/master/PRIVACY.md',
+      privacy: 'https://github.com/Pixel-Tailor-CN/PixelText/raw/refs/heads/main/PRIVACY.md',
     }
   },
   {

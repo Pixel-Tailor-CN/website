@@ -28,7 +28,7 @@ export const site: SiteConfig = {
   tagline: '为不完美的体验，做精细的缝补。',
   description:
     '专注于提升 Google Pixel 国内使用体验的开源工具集，强调原生 Android 体验、隐私至上与 Material You 适配。',
-  url: 'https://pixel-tailor-cn.github.io',
+  url: 'https://pixel.mystery0.app',
   locale: 'zh-CN',
   author: {
     name: 'Mystery0',
