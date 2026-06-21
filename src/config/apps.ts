@@ -85,6 +85,7 @@ export const apps: AppItem[] = [
     icon: '/icons/pixel-snooze.png',
     accent: 'blue',
     links: {
+      googlePlay: 'https://play.google.com/store/apps/details?id=vip.mystery0.pixel.snooze',
       github: 'https://github.com/Pixel-Tailor-CN/PixelSnooze',
       privacy: 'https://github.com/Pixel-Tailor-CN/PixelSnooze/raw/refs/heads/main/PRIVACY.md',
     },
