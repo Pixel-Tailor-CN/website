@@ -13,22 +13,22 @@ const accentMap: Record<AccentColor, { ring: string; halo: string; chip: string 
   blue: {
     ring: 'group-hover:border-google-blue/60',
     halo: 'group-hover:shadow-[0_8px_32px_-8px_rgba(66,133,244,0.35)]',
-    chip: 'bg-google-blue/10 text-google-blue',
+    chip: 'bg-google-blue/10 text-[#185ABC] dark:text-google-blue',
   },
   red: {
     ring: 'group-hover:border-google-red/60',
     halo: 'group-hover:shadow-[0_8px_32px_-8px_rgba(234,67,53,0.35)]',
-    chip: 'bg-google-red/10 text-google-red',
+    chip: 'bg-google-red/10 text-[#B3261E] dark:text-google-red',
   },
   yellow: {
     ring: 'group-hover:border-google-yellow/60',
     halo: 'group-hover:shadow-[0_8px_32px_-8px_rgba(251,188,5,0.35)]',
-    chip: 'bg-google-yellow/15 text-[#B5891D] dark:text-google-yellow',
+    chip: 'bg-google-yellow/15 text-[#725C00] dark:text-google-yellow',
   },
   green: {
     ring: 'group-hover:border-google-green/60',
     halo: 'group-hover:shadow-[0_8px_32px_-8px_rgba(52,168,83,0.35)]',
-    chip: 'bg-google-green/10 text-google-green',
+    chip: 'bg-google-green/10 text-[#137333] dark:text-google-green',
   },
 };
 
@@ -58,7 +58,10 @@ const hasPrivacy = !!app.links.privacy;
           </span>
         )}
       </div>
-      <p class="mt-1 text-sm text-on-surface-variant">
+      <p class="mt-1 text-sm font-medium text-primary">
+        {app.scene}
+      </p>
+      <p class="mt-2 text-sm text-on-surface-variant">
         {app.summary}
       </p>
     </div>
@@ -72,68 +75,68 @@ const hasPrivacy = !!app.links.privacy;
     ))}
   </ul>
 
-  <div class="mt-auto flex flex-wrap gap-2.5 pt-2">
-    {!isComingSoon && hasPlay && (
-      <a
-        href={app.links.googlePlay}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="m3-btn-filled h-10 px-5 text-sm"
-        aria-label={`在 Google Play 下载 ${app.name}`}
-      >
-        <!-- Google Play 官方四色三角形 -->
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-4 h-4" aria-hidden="true">
-          <path fill="#00C3FF" d="M3 20.5V3.5c0-.59.34-1.11.84-1.35L13.69 12 3.84 21.85C3.34 21.6 3 21.09 3 20.5z"/>
-          <path fill="#FFCE00" d="m16.81 8.88-2.27 2.27L6.05 2.66z"/>
-          <path fill="#FF3A44" d="m16.81 15.12-10.76 6.22 8.49-8.49z"/>
-          <path fill="#00DE7A" d="M20.16 10.81c.59.32.59 1.06 0 1.38l-2.27 1.31-2.5-2.5 2.5-2.5z"/>
-        </svg>
-        Google Play
-      </a>
-    )}
-    {!isComingSoon && hasGithub && (
-      <a
-        href={app.links.github}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="m3-btn-outlined h-10 px-5 text-sm"
-        aria-label={`查看 ${app.name} 的 GitHub 仓库`}
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4" aria-hidden="true">
-          <path d="M12 .5a12 12 0 0 0-3.79 23.39c.6.11.82-.26.82-.58v-2c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.21.09 1.85 1.24 1.85 1.24 1.07 1.84 2.81 1.31 3.5 1 .11-.78.42-1.31.76-1.61-2.66-.3-5.46-1.33-5.46-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.11-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.65 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.62-5.49 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.82.58A12 12 0 0 0 12 .5Z"/>
-        </svg>
-        GitHub
-      </a>
-    )}
-    {!isComingSoon && hasApk && (
-      <a
-        href={app.links.apk}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="m3-btn-outlined h-10 px-5 text-sm"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4" aria-hidden="true">
-          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-          <polyline points="7 10 12 15 17 10"></polyline>
-          <line x1="12" y1="15" x2="12" y2="3"></line>
-        </svg>
-        APK
-      </a>
-    )}
+  <div class="mt-auto pt-2">
+    <div class="flex flex-wrap gap-2.5">
+      {!isComingSoon && hasPlay && (
+        <a
+          href={app.links.googlePlay}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="m3-btn-filled h-10 px-5 text-sm"
+          aria-label={`在 Google Play 下载 ${app.name}`}
+        >
+          <!-- Google Play 官方四色三角形 -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-4 h-4" aria-hidden="true">
+            <path fill="#00C3FF" d="M3 20.5V3.5c0-.59.34-1.11.84-1.35L13.69 12 3.84 21.85C3.34 21.6 3 21.09 3 20.5z"/>
+            <path fill="#FFCE00" d="m16.81 8.88-2.27 2.27L6.05 2.66z"/>
+            <path fill="#FF3A44" d="m16.81 15.12-10.76 6.22 8.49-8.49z"/>
+            <path fill="#00DE7A" d="M20.16 10.81c.59.32.59 1.06 0 1.38l-2.27 1.31-2.5-2.5 2.5-2.5z"/>
+          </svg>
+          Google Play
+        </a>
+      )}
+      {!isComingSoon && hasApk && (
+        <a
+          href={app.links.apk}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="m3-btn-outlined h-10 px-5 text-sm"
+          aria-label={`前往 GitHub Releases 下载 ${app.name}`}
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4" aria-hidden="true">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          Releases
+        </a>
+      )}
+      {!isComingSoon && hasGithub && (
+        <a
+          href={app.links.github}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="m3-btn-text h-10 px-4 text-sm"
+          aria-label={`查看 ${app.name} 的 GitHub 仓库`}
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4" aria-hidden="true">
+            <path d="M12 .5a12 12 0 0 0-3.79 23.39c.6.11.82-.26.82-.58v-2c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.21.09 1.85 1.24 1.85 1.24 1.07 1.84 2.81 1.31 3.5 1 .11-.78.42-1.31.76-1.61-2.66-.3-5.46-1.33-5.46-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.11-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.65 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.62-5.49 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.82.58A12 12 0 0 0 12 .5Z"/>
+          </svg>
+          GitHub
+        </a>
+      )}
+    </div>
     {!isComingSoon && hasPrivacy && (
-      <a
-        href={app.links.privacy}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="m3-btn-outlined h-10 px-5 text-sm"
-        aria-label={`查看 ${app.name} 的隐私政策`}
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4" aria-hidden="true">
-          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"></path>
-          <path d="m9 12 2 2 4-4"></path>
-        </svg>
-        隐私政策
-      </a>
+      <p class="mt-4 text-xs text-on-surface-variant/80">
+        敏感权限仅用于对应功能，详见
+        <a
+          href={app.links.privacy}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="underline decoration-outline-variant underline-offset-4 hover:text-on-surface"
+          aria-label={`查看 ${app.name} 的隐私政策`}
+        >隐私政策</a>。
+      </p>
     )}
   </div>
 </article>
