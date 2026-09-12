@@ -70,3 +70,15 @@ const supportChannels = [
     </p>
   </div>
 </section>
+
+<script>
+  const panels = document.querySelectorAll<HTMLDetailsElement>('#support details');
+  panels.forEach((panel) => {
+    panel.querySelector('summary')?.addEventListener('click', (event) => {
+      // 统一切换两个收款码，避免网格等高时出现另一侧空白。
+      event.preventDefault();
+      const open = !panel.open;
+      panels.forEach((item) => { item.open = open; });
+    });
+  });
+</script>
