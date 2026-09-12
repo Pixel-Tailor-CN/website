@@ -18,11 +18,16 @@ export interface AppItem {
   icon: string;
   accent: AccentColor;
   comingSoon?: boolean;
+  requirements?: string;
+  history?: string;
+  details?: { title: string; text: string }[];
   links: {
     googlePlay?: string;
     github?: string;
     apk?: string;
     privacy?: string;
+    docs?: string;
+    issues?: string;
   };
 }
 
@@ -73,6 +78,21 @@ export const apps: AppItem[] = [
     },
   },
   {
+    id: 'pixel-snooze',
+    name: 'Pixel Snooze',
+    scene: '休息日闹钟辅助',
+    summary: '在休息日自动处理 Google/AOSP 时钟通知里的跳过或关闭操作。',
+    highlights: ['休息日判断', '通知监听跳过', '调休日历缓存'],
+    icon: '/icons/pixel-snooze.png',
+    accent: 'blue',
+    links: {
+      googlePlay: 'https://play.google.com/store/apps/details?id=vip.mystery0.pixel.snooze',
+      github: 'https://github.com/Pixel-Tailor-CN/PixelSnooze',
+      apk: 'https://github.com/Pixel-Tailor-CN/PixelSnooze/releases/latest',
+      privacy: 'https://github.com/Pixel-Tailor-CN/PixelSnooze/raw/refs/heads/main/PRIVACY.md',
+    },
+  },
+  {
     id: 'pixel-geo',
     name: 'Pixel Geo',
     scene: '罗盘与定位',
@@ -88,18 +108,34 @@ export const apps: AppItem[] = [
     },
   },
   {
-    id: 'pixel-snooze',
-    name: 'Pixel Snooze',
-    scene: '休息日闹钟辅助',
-    summary: '在休息日自动处理 Google/AOSP 时钟通知里的跳过或关闭操作。',
-    highlights: ['休息日判断', '通知监听跳过', '调休日历缓存'],
-    icon: '/icons/pixel-snooze.png',
-    accent: 'blue',
+    id: 'tensorims',
+    name: 'TensorIMS',
+    scene: 'Pixel Tensor 的 IMS 配置',
+    summary: '通过 Shizuku 管理 VoLTE、VoWiFi 等通话与网络配置，无需 root。',
+    highlights: ['VoLTE / VoWiFi', '按 SIM 配置', 'Shizuku 授权'],
+    icon: '/icons/tensorims.png',
+    accent: 'green',
+    requirements: 'Android 13 及以上，仅支持搭载 Google Tensor 芯片的 Pixel 设备。主要维护中国大陆的中国移动、中国联通、中国电信网络。',
+    history: '原 Mystery00/TurboIMS，现以 TensorIMS 名称继续维护；曾更名为 Mystery00/TensorIMS，后迁移至 Pixel-Tailor-CN。更名仅针对本维护版本。',
+    details: [
+      {
+        title: '可以配置什么',
+        text: '支持 VoLTE、VoWiFi、视频通话、VoNR（需 Android 14+）、Cross-SIM Calling（跨卡通话）、UT 补充业务及 5G NSA / SA 配置。先启动并授权 Shizuku，再选择 SIM 卡、调整选项并应用配置。配置开关不代表运营商已开通对应服务。',
+      },
+      {
+        title: '支持与维护边界',
+        text: '其他运营商因缺少设备、SIM 卡和网络测试条件，不作为主要适配与维护对象；这不表示其他网络一定无法使用，也不保证三大运营商下所有功能均可用。实际效果取决于设备、系统、SIM 卡及网络。',
+      },
+      {
+        title: '实验性持久化 VoLTE',
+        text: '正式版 3.7.4 已提供。需设备支持所需系统接口，且设备与运营商兼容；首次读取、启用或恢复时需要启动并授权 Shizuku，并选择单张 SIM。正常重启后可无需启动 Shizuku 继续使用 VoLTE，但应验证实际通话。仅保留 VoLTE 开启设置；5G、VoWiFi、VoNR 等额外配置重启后仍需 Shizuku 重新应用。系统更新或换卡后可能需要重新启用；卸载或清除数据前请先恢复原设置，以免丢失恢复记录。',
+      },
+    ],
     links: {
-      googlePlay: 'https://play.google.com/store/apps/details?id=vip.mystery0.pixel.snooze',
-      github: 'https://github.com/Pixel-Tailor-CN/PixelSnooze',
-      apk: 'https://github.com/Pixel-Tailor-CN/PixelSnooze/releases/latest',
-      privacy: 'https://github.com/Pixel-Tailor-CN/PixelSnooze/raw/refs/heads/main/PRIVACY.md',
+      github: 'https://github.com/Pixel-Tailor-CN/TensorIMS',
+      apk: 'https://github.com/Pixel-Tailor-CN/TensorIMS/releases/latest',
+      docs: 'https://github.com/Pixel-Tailor-CN/TensorIMS/blob/master/README_CN.md',
+      issues: 'https://github.com/Pixel-Tailor-CN/TensorIMS/issues',
     },
   },
 ];

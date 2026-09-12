@@ -81,11 +81,20 @@ pnpm check
 
 替换应用图标时，将真实 SVG 或 PNG 放入 `public/icons/`，并在 `apps.ts` 中更新 `icon` 字段路径。替换组织 Logo 时更新 `public/logo.svg`。
 
+### TensorIMS 资料维护
+
+- TensorIMS 沿用首页 `AppCard`，内部入口为 `/#tensorims`，没有单独详情页。列表优先展示 Pixel Telo、Pixel Text、Pixel Meter 和 Pixel Snooze，TensorIMS 放在最后。卡片不显示维护者；`requirements`、`history` 和 `details` 在 `AppDetails` 弹窗内展示支持范围、旧名说明与使用须知；`links.docs`、`links.issues` 提供文档与反馈入口。
+- 功能资料于 2026-09-12 对照 [正式版 3.7.4.r135.3a9c68f2](https://github.com/Pixel-Tailor-CN/TensorIMS/releases/tag/3.7.4.r135.3a9c68f2)、该标签的 `README_CN.md` 和 `app/src/main/res/values-zh-rCN/strings.xml` 核实。后续更新应再次核对正式版，不能直接把开发分支功能当作已发布能力。
+- 实验性持久化仅保留 VoLTE 开启设置，需兼容系统接口、设备及运营商；其他 IMS、5G 配置仍需 Shizuku 重新应用。介绍时保留系统更新、换卡及卸载前恢复的限制。
+- `public/icons/tensorims.png` 原样复用上述版本的 `app/src/main/ic_launcher-playstore.png`。项目说明该图标源于 iconfont 并经修改，来源与鸣谢见 [中文文档](https://github.com/Pixel-Tailor-CN/TensorIMS/blob/master/README_CN.md)。
+
 ## 站点信息与 SEO
 
 调整品牌信息或 SEO 时，编辑 `src/config/site.ts` 中的 `name`、`description`、`seo.keywords` 等字段。
 
 部署前请确认 `astro.config.mjs` 的 `site` 字段已改为真实域名，确保 SEO 和 Open Graph 元数据中的绝对 URL 正确。
+
+`src/pages/sitemap.xml.ts` 生成首页 sitemap，`public/robots.txt` 声明其地址；项目锚点不单独收录。新增独立页面时同步更新 sitemap，变更域名时同时更新 robots 中的地址。
 
 ## 主题与暗黑模式
 

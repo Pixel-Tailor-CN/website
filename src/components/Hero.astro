@@ -70,13 +70,12 @@ import { site } from '@/config/site';
 
       <div class="relative hidden min-h-[360px] lg:block" aria-hidden="true">
         <div class="absolute inset-6 rounded-[48px] border border-outline-variant/30 bg-surface-container/70 shadow-m3-2 backdrop-blur-sm"></div>
-        {apps.map((app, index) => {
+        {apps.slice(0, 4).map((app, index) => {
           const positions = [
             'left-2 top-20 -rotate-6',
             'left-32 top-2 rotate-4',
             'right-2 top-24 rotate-6',
             'left-20 bottom-2 rotate-3',
-            'right-20 bottom-4 -rotate-4',
           ];
           return (
             <div class={`absolute ${positions[index]} w-24 h-24 rounded-[28px] border border-outline-variant/35 bg-surface-container-lowest p-3 shadow-m3-2`}>

@@ -1,0 +1,68 @@
+---
+import type { AppItem } from '@/config/apps';
+
+interface Props {
+  app: AppItem;
+}
+
+const { app } = Astro.props;
+---
+
+<dialog id={`details-${app.id}`} aria-labelledby={`details-${app.id}-title`}
+  class="app-details m-auto w-[calc(100%-2rem)] max-w-2xl max-h-[85dvh] overflow-y-auto overscroll-contain rounded-(--radius-m3-lg) border border-outline-variant/40 bg-surface-container-high p-0 text-on-surface shadow-m3-2">
+  <header class="sticky top-0 flex items-center justify-between gap-4 border-b border-outline-variant/30 bg-surface-container-high px-6 py-4">
+    <h2 id={`details-${app.id}-title`} class="text-lg font-semibold">{app.name} · 功能与使用须知</h2>
+    <form method="dialog">
+      <button autofocus class="m3-btn-icon shrink-0" aria-label="关闭弹窗">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-5 w-5" aria-hidden="true">
+          <path d="m6 6 12 12M18 6 6 18" />
+        </svg>
+      </button>
+    </form>
+  </header>
+  <div class="space-y-5 p-6 text-sm leading-relaxed text-on-surface-variant">
+    <p>{app.requirements}</p>
+    <p>{app.history}</p>
+    {app.details?.map((detail) => (
+      <section>
+        <h3 class="font-semibold text-on-surface">{detail.title}</h3>
+        <p class="mt-2">{detail.text}</p>
+      </section>
+    ))}
+    <div class="flex flex-wrap gap-2 border-t border-outline-variant/30 pt-4">
+      {[
+        { href: app.links.apk, label: '下载最新版' },
+        { href: app.links.github, label: 'GitHub 仓库' },
+        { href: app.links.docs, label: '使用文档' },
+        { href: app.links.issues, label: '问题反馈' },
+      ].filter((link) => link.href).map((link) => (
+        <a href={link.href} target="_blank" rel="noopener noreferrer" class="m3-btn-text"
+          aria-label={`${app.name} ${link.label}`}>{link.label}</a>
+      ))}
+    </div>
+  </div>
+</dialog>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>('[data-app-details]').forEach((button) => {
+    const dialog = document.getElementById(button.dataset.appDetails ?? '');
+    if (!(dialog instanceof HTMLDialogElement)) return;
+    button.addEventListener('click', () => dialog.showModal());
+    // 原生弹窗处理焦点约束与 Escape；点击遮罩也可以关闭。
+    dialog.addEventListener('click', (event) => {
+      if (event.target !== dialog) return;
+      const rect = dialog.getBoundingClientRect();
+      if (event.clientX < rect.left || event.clientX > rect.right ||
+          event.clientY < rect.top || event.clientY > rect.bottom) dialog.close();
+    });
+  });
+</script>
+
+<style>
+  .app-details::backdrop {
+    background: rgb(0 0 0 / 48%);
+  }
+  :global(html:has(.app-details[open])) {
+    overflow: hidden;
+  }
+</style>

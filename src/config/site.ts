@@ -27,7 +27,7 @@ export const site: SiteConfig = {
   name: 'Pixel-Tailor-CN',
   tagline: '为不完美的体验，做精细的缝补。',
   description:
-    '一组面向国内 Pixel 用户的开源工具，补齐来电、短信、网速与定位等本地化使用场景。',
+    '一组面向国内 Pixel 用户的开源工具，补齐来电识别、短信整理、网速监控与休息日闹钟等本地化使用场景。',
   url: 'https://pixel.mystery0.app',
   locale: 'zh-CN',
   author: {
@@ -45,6 +45,8 @@ export const site: SiteConfig = {
       'Pixel-Tailor-CN',
       '原点系列',
       '开源 Android 工具',
+      'TensorIMS',
+      'TurboIMS',
     ],
     ogImage: '/og.png',
   },
