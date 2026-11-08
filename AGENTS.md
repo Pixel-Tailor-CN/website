@@ -34,6 +34,7 @@ pnpm check
 
 - `src/config/apps.ts` 是「原点系列」应用的集中配置，也是维护应用卡片、图标、点缀色和链接的主要入口。
 - `src/config/site.ts` 包含站点身份信息和 SEO 元数据。
+- `src/config/support.ts` 集中管理赞助渠道，供首页和应用配置 JSON 共用。
 - `src/styles/global.css` 包含 Tailwind v4 `@theme` 变量和共享 Material Design 3 组件类。
 
 ### 页面与布局
@@ -87,6 +88,39 @@ pnpm check
 - 功能资料于 2026-09-12 对照 [正式版 3.7.4.r135.3a9c68f2](https://github.com/Pixel-Tailor-CN/TensorIMS/releases/tag/3.7.4.r135.3a9c68f2)、该标签的 `README_CN.md` 和 `app/src/main/res/values-zh-rCN/strings.xml` 核实。后续更新应再次核对正式版，不能直接把开发分支功能当作已发布能力。
 - 实验性持久化仅保留 VoLTE 开启设置，需兼容系统接口、设备及运营商；其他 IMS、5G 配置仍需 Shizuku 重新应用。介绍时保留系统更新、换卡及卸载前恢复的限制。
 - `public/icons/tensorims.png` 原样复用上述版本的 `app/src/main/ic_launcher-playstore.png`。项目说明该图标源于 iconfont 并经修改，来源与鸣谢见 [中文文档](https://github.com/Pixel-Tailor-CN/TensorIMS/blob/master/README_CN.md)。
+
+## 赞助配置维护
+
+- 应用读取 `https://pixel.mystery0.app/support/config.json`；它由 `src/pages/support/config.json.ts` 在构建时生成，修改 `src/config/support.ts` 后须重新构建并部署，开发服务器上的修改不会自动发布到官网。
+- `schemaVersion` 是整数版本号，当前为 `1`。破坏性变更应升级版本，旧版应用遇到不支持的版本须显示不可用并允许重试，不可尝试猜测字段含义。
+- 顶层 `enabled` 和每个渠道的 `enabled` 均为布尔值，`false` 表示停用。停用时首页同步隐藏对应入口；顶层停用或无可用渠道时首页隐藏整个赞助区。
+- `channels` 是数组，当前仅包含 `id` 为 `alipay`、`wechat` 的渠道。`qrCodeUrl` 是根据 `src` 和站点域名生成的绝对 HTTPS 图片地址，图片保存在 `public/support/`。当前 Pixel Text 只接受 `https://pixel.mystery0.app/support/` 下的资源，地址不得包含查询参数、片段、编码路径或路径穿越。更新时核对图片对应的真实收款方，并检查文件在部署产物中存在。
+- `paymentUrl` 是可选的收款页链接；仅在确认对应渠道支持、且经真机验证后填写，不得编造跳转协议。当前 Pixel Text 只接受没有用户名密码、显式端口和片段的 HTTPS 链接；`alipay` 仅允许主机 `qr.alipay.com`，`wechat` 仅允许主机 `payapp.weixin.qq.com`。这些限制只是客户端安全白名单，不表示对应主机上的任意地址都有可用的收款跳转能力。当前不提供该字段；没有已验证可用的链接时继续缺省，应用应降级为打开对应应用首页，并保留收款码和保存入口；打开应用不等于发起支付或支付成功。
+- 应用不得把远程字段直接作为包名、任意 Intent 或未经校验的跳转目标。名称、说明、包名和纯自愿赞助文案由应用内固定维护，赞助不兑换功能或其他数字权益。
+- 空响应、`null`、非法 JSON、缺失/类型错误的必要字段、未知版本、没有有效渠道、HTTP 错误和网络超时均应安全显示不可用或失败与重试；单个无效渠道应隔离，不能导致其他有效渠道或应用崩溃。未知新增字段应忽略；`paymentUrl` 缺失或无效时只禁用直达收款页能力。
+- 接口只下发公开静态配置，不需要客户端上传短信、手机号、设备或安装标识，不查询交易记录，也不提供支付结果回调。托管服务的访问日志仍按其配置处理。
+- JSON 是供应用使用的机器配置，不是独立内容页面，不加入 sitemap。发布后检查配置返回 JSON、引用图片可访问，并按托管环境需要刷新 CDN 缓存。
+
+当前 JSON 示例：
+
+```json
+{
+  "schemaVersion": 1,
+  "enabled": true,
+  "channels": [
+    {
+      "id": "alipay",
+      "enabled": true,
+      "qrCodeUrl": "https://pixel.mystery0.app/support/alipay.jpg"
+    },
+    {
+      "id": "wechat",
+      "enabled": true,
+      "qrCodeUrl": "https://pixel.mystery0.app/support/wechat.png"
+    }
+  ]
+}
+```
 
 ## 站点信息与 SEO
 

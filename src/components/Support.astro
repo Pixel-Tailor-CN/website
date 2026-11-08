@@ -1,26 +1,10 @@
 ---
-const supportChannels = [
-  {
-    id: 'alipay',
-    name: '支付宝',
-    src: '/support/alipay.jpg',
-    alt: '支付宝收款码',
-    width: 1080,
-    height: 1621,
-    chip: 'bg-google-blue/10 text-[#185ABC] dark:text-google-blue',
-  },
-  {
-    id: 'wechat',
-    name: '微信',
-    src: '/support/wechat.png',
-    alt: '微信收款码',
-    width: 1123,
-    height: 1527,
-    chip: 'bg-google-green/10 text-[#137333] dark:text-google-green',
-  },
-];
+import { supportChannels, supportConfig } from '@/config/support';
+
+const activeChannels = supportChannels.filter((channel) => channel.enabled);
 ---
 
+{supportConfig.enabled && activeChannels.length > 0 && (
 <section id="support" class="scroll-mt-20">
   <div class="mx-auto max-w-6xl px-5 sm:px-8 py-16 sm:py-20">
     <div class="max-w-3xl">
@@ -37,7 +21,7 @@ const supportChannels = [
     </div>
 
     <div class="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6">
-      {supportChannels.map((channel) => (
+      {activeChannels.map((channel) => (
         <details class="m3-card group p-5 sm:p-6">
           <summary class="flex cursor-pointer list-none items-center justify-between gap-4 rounded-(--radius-m3) select-none [&::-webkit-details-marker]:hidden">
             <div class="flex items-center gap-3">
@@ -70,6 +54,7 @@ const supportChannels = [
     </p>
   </div>
 </section>
+)}
 
 <script>
   const panels = document.querySelectorAll<HTMLDetailsElement>('#support details');
