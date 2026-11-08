@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "enabled": true,
+  "channels": [
+    {
+      "id": "alipay",
+      "enabled": true,
+      "qrCodeUrl": "https://pixel.mystery0.app/support/alipay.jpg"
+    },
+    {
+      "id": "wechat",
+      "enabled": true,
+      "qrCodeUrl": "https://pixel.mystery0.app/support/wechat.png"
+    }
+  ]
+}
