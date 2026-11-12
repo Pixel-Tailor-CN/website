@@ -149,7 +149,7 @@ pnpm check
 推送到 `main` 后，`.github/workflows/deploy.yml` 构建后先部署到 GitHub Pages，再部署到 EdgeOne Pages 国内站账号（`--site china`）的 `pixel-tailor-cn` 项目，项目名和站点写在工作流中。
 
 - 仓库 Secret `EDGEONE_API_TOKEN`：在 EdgeOne Pages 控制台的「API Token」页创建，有效期最长一年，到期前须更换；缺失或过期时部署失败。
-- `pixel-tailor-cn` 是「直接上传」类型项目，加速区域须为「全球可用区（不含中国大陆）」，其他区域要求域名备案。
+- `pixel-tailor-cn` 是「直接上传」类型项目，加速区域须为「全球可用区（不含中国大陆）」，其他区域要求域名备案。CLI 的 `-a` 默认值 `global` 表示含中国大陆，工作流中须显式传 `-a overseas`；该参数只在项目创建时生效，已有项目的区域要在控制台修改。
 - 过渡期内工作流仍先部署到 GitHub Pages，`CNAME` 文件为其保留自定义域名。DNS 切到 EdgeOne Pages 并确认无误后，删除工作流中的 GitHub Pages 步骤和 `CNAME` 文件，并更新本节。
 - 自定义域名 `pixel.mystery0.app` 在 EdgeOne Pages 控制台的域名管理中绑定。
 
