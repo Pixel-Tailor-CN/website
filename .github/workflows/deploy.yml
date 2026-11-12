@@ -22,6 +22,7 @@ jobs:
         run: pnpm install
       - name: Build project
         run: pnpm run build
+      # DNS 切到 EdgeOne 之前保留 GitHub Pages 部署，切换完成后删除以下两步和 CNAME 文件
       - name: Copy custom domain
         run: cp CNAME ./dist/CNAME
       - name: Deploy to GitHub Pages
@@ -29,3 +30,12 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
+      - name: Deploy to EdgeOne Pages
+        env:
+          EDGEONE_API_TOKEN: ${{ secrets.EDGEONE_API_TOKEN }}
+        run: |
+          cp edgeone.json ./dist/edgeone.json
+          npx --yes edgeone@latest makers deploy ./dist \
+            -n pixel-tailor-cn \
+            -t "$EDGEONE_API_TOKEN" \
+            --site global
