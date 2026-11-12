@@ -146,7 +146,7 @@ pnpm check
 
 ## 部署
 
-推送到 `main` 后，`.github/workflows/deploy.yml` 构建后先部署到 GitHub Pages，再部署到 EdgeOne Pages 国际站（`--site global`）的 `pixel-tailor-cn` 项目，项目名和站点写在工作流中。
+推送到 `main` 后，`.github/workflows/deploy.yml` 构建后先部署到 GitHub Pages，再部署到 EdgeOne Pages 国内站账号（`--site china`）的 `pixel-tailor-cn` 项目，项目名和站点写在工作流中。
 
 - 仓库 Secret `EDGEONE_API_TOKEN`：在 EdgeOne Pages 控制台的「API Token」页创建，有效期最长一年，到期前须更换；缺失或过期时部署失败。
 - `pixel-tailor-cn` 是「直接上传」类型项目，加速区域须为「全球可用区（不含中国大陆）」，其他区域要求域名备案。
