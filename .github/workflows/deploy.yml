@@ -22,6 +22,11 @@ jobs:
         run: pnpm install
       - name: Build project
         run: pnpm run build
+      # 国内站产物只有赞助配置里的收款码地址不同，改用国内域名
+      - name: Build mainland variant
+        env:
+          SUPPORT_ORIGIN: https://pixel.mystery0.vip
+        run: pnpm exec astro build --outDir dist-mainland
       # DNS 切到 EdgeOne 之前保留 GitHub Pages 部署，切换完成后删除以下两步和 CNAME 文件
       - name: Copy custom domain
         run: cp CNAME ./dist/CNAME
@@ -35,8 +40,19 @@ jobs:
           EDGEONE_API_TOKEN: ${{ secrets.EDGEONE_API_TOKEN }}
         run: |
           cp edgeone.json ./dist/edgeone.json
-          npx --yes edgeone@latest makers deploy ./dist \
+          # 国际站产物额外带上中间件；CLI 从当前目录编译中间件，所以进入各自目录再部署
+          cp -r dist dist-intl
+          cp middleware.js ./dist-intl/middleware.js
+          # 国际站 pixel.mystery0.app：不含中国大陆的加速区域
+          (cd dist-intl && npx --yes edgeone@latest makers deploy . \
             -n pixel-tailor-cn \
             -t "$EDGEONE_API_TOKEN" \
             --site china \
-            -a overseas
+            -a overseas)
+          # 国内站 pixel.mystery0.vip：含中国大陆的加速区域，不带中间件
+          cp edgeone.json ./dist-mainland/edgeone.json
+          (cd dist-mainland && npx --yes edgeone@latest makers deploy . \
+            -n pixel-tailor-cn-mainland \
+            -t "$EDGEONE_API_TOKEN" \
+            --site china \
+            -a global)

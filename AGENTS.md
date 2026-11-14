@@ -146,12 +146,22 @@ pnpm check
 
 ## 部署
 
-推送到 `main` 后，`.github/workflows/deploy.yml` 构建后先部署到 GitHub Pages，再部署到 EdgeOne Pages 国内站账号（`--site china`）的 `pixel-tailor-cn` 项目，项目名和站点写在工作流中。
+站点有两个内容相同的域名：国际站 `pixel.mystery0.app`（DNS 在 Cloudflare）和国内站 `pixel.mystery0.vip`（已备案，DNS 在腾讯云）。`astro.config.mjs` 的 `site` 保持国际站域名，两边的 canonical 和 sitemap 都指向国际站。工作流构建两次：默认产物 `dist/` 给国际站；国内站产物 `dist-mainland/` 构建时带环境变量 `SUPPORT_ORIGIN=https://pixel.mystery0.vip`，唯一差别是 `/support/config.json` 里的 `qrCodeUrl` 改用国内域名，让大陆用户的收款码走国内节点。应用须同时接受两个域名下的 `/support/` 资源。
+
+推送到 `main` 后，`.github/workflows/deploy.yml` 构建后先部署到 GitHub Pages，再部署到 EdgeOne Pages 国内站账号（`--site china`）的两个项目，项目名和站点写在工作流中。
 
 - 仓库 Secret `EDGEONE_API_TOKEN`：在 EdgeOne Pages 控制台的「API Token」页创建，有效期最长一年，到期前须更换；缺失或过期时部署失败。
-- `pixel-tailor-cn` 是「直接上传」类型项目，加速区域须为「全球可用区（不含中国大陆）」，其他区域要求域名备案。CLI 的 `-a` 默认值 `global` 表示含中国大陆，工作流中须显式传 `-a overseas`；该参数只在项目创建时生效，已有项目的区域要在控制台修改。
+- `pixel-tailor-cn` 是国际站项目，「直接上传」类型，加速区域须为「全球可用区（不含中国大陆）」，其他区域要求域名备案。CLI 的 `-a` 默认值 `global` 表示含中国大陆，工作流中须显式传 `-a overseas`；该参数只在项目创建时生效，已有项目的区域要在控制台修改。绑定自定义域名 `pixel.mystery0.app`。
+- `pixel-tailor-cn-mainland` 是国内站项目，加速区域含中国大陆（`-a global`），绑定自定义域名 `pixel.mystery0.vip`。
 - 过渡期内工作流仍先部署到 GitHub Pages，`CNAME` 文件为其保留自定义域名。DNS 切到 EdgeOne Pages 并确认无误后，删除工作流中的 GitHub Pages 步骤和 `CNAME` 文件，并更新本节。
-- 自定义域名 `pixel.mystery0.app` 在 EdgeOne Pages 控制台的域名管理中绑定。
+
+### 大陆访客跳转
+
+根目录的 `middleware.js` 是 EdgeOne Pages 中间件，只随国际站项目部署：访问 `pixel.mystery0.app` 首页且 IP 属于中国大陆时，302 到 `pixel.mystery0.vip`。跳转依赖国际站域名解析到 EdgeOne Pages，仍指向 GitHub Pages 时不生效。
+
+- 中间件每次触发都计入 Edge Functions 执行次数和 CPU 时间，超出套餐额度会计费或被限制。`matcher` 只匹配 `/`，静态资源、`/support/*`、sitemap 等不触发；新增独立页面时按需加入 `matcher`，不要改成匹配全部路径。
+- `/support/*` 不得跳转，应用读取的赞助配置始终直接返回。
+- 国内站项目不带中间件，避免占用执行次数。CLI 从当前工作目录编译中间件，所以工作流进入各自的产物目录再部署；国际站部署日志应出现 `Middleware loaded, matcher: ["/"]`。
 
 `edgeone.json` 定义 EdgeOne Pages 的响应头：`/support/config.json` 缓存 5 分钟，`/_astro/*` 长期缓存。应用读取的域名 `pixel.mystery0.app` 不得变更，切换托管只改 DNS 指向。
 

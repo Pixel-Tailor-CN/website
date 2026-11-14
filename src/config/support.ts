@@ -44,12 +44,14 @@ export const supportChannels: SupportChannel[] = [
 
 /** 仅公开应用所需字段，不下发任意包名、Intent 或远程界面文案。 */
 export function getSupportManifest() {
+  // 国内站构建时通过环境变量 SUPPORT_ORIGIN 改用国内域名，收款码不必绕行海外节点
+  const origin = import.meta.env.SUPPORT_ORIGIN || site.url;
   return {
     ...supportConfig,
     channels: supportChannels.map((channel) => ({
       id: channel.id,
       enabled: channel.enabled,
-      qrCodeUrl: new URL(channel.src, site.url).href,
+      qrCodeUrl: new URL(channel.src, origin).href,
       ...(channel.paymentUrl ? { paymentUrl: channel.paymentUrl } : {}),
     })),
   };
