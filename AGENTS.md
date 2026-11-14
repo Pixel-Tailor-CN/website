@@ -161,7 +161,9 @@ pnpm check
 
 - 中间件每次触发都计入 Edge Functions 执行次数和 CPU 时间，超出套餐额度会计费或被限制。`matcher` 只匹配 `/`，静态资源、`/support/*`、sitemap 等不触发；新增独立页面时按需加入 `matcher`，不要改成匹配全部路径。
 - `/support/*` 不得跳转，应用读取的赞助配置始终直接返回。
-- 国内站项目不带中间件，避免占用执行次数。CLI 从当前工作目录编译中间件，所以工作流进入各自的产物目录再部署；国际站部署日志应出现 `Middleware loaded, matcher: ["/"]`。
+- 国内站项目不带中间件，避免占用执行次数。直传目录时 CLI 不在本地编译，平台从上传产物的根目录识别 `middleware.js`，所以工作流只把它复制进国际站产物 `dist-intl/`；部署日志不会提示中间件是否加载。
+- `middleware.js` 同时会作为静态文件发布在国际站的 `/middleware.js`，不要在其中写入任何敏感信息。
+- 部署后验证：从大陆网络请求 `https://pixel.mystery0.app/` 应返回 302 到国内站，`/support/config.json` 应返回 200；国内站 `/middleware.js` 应为 404。
 
 `edgeone.json` 定义 EdgeOne Pages 的响应头：`/support/config.json` 缓存 5 分钟，`/_astro/*` 长期缓存。应用读取的域名 `pixel.mystery0.app` 不得变更，切换托管只改 DNS 指向。
 
